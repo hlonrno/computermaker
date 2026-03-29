@@ -34,7 +34,7 @@ void camera_move(camera_t *camera, enum CameraDirection direction) {
     }
 
     glm_vec3_add(camera->origin, offset, camera->origin);
-    glm_vec3_add(camera->target, camera->front, camera->target);
+    glm_vec3_add(camera->target, offset, camera->target);
 }
 
 void rotate(vec3 vec, vec3 rot) {
@@ -52,13 +52,14 @@ void rotate(vec3 vec, vec3 rot) {
     vec[2] = (float)(x * (-sb) + y * (cb * sg) + z * (cb * cg));
 }
 
+#define PI 3.141565f
 vec3 scratch_buf;
 vec3 pmouse = (vec3){0, 0, 0};
 void camera_mouse_cb(camera_t *camera, double mouseX, double mouseY) {
-    vec3 deltaMouse = {0};
-    deltaMouse[0] = mouseX - pmouse[0];
-    deltaMouse[1] = mouseY - pmouse[1];
-    glm_vec3_add(camera->rotation, deltaMouse, camera->rotation);
+    camera->rotation[1] += (mouseX - pmouse[0]) * PI / 180;
+    camera->rotation[0] -= (mouseY - pmouse[1]) * PI / 180;
+    // if (camera->rotation[1] > PI) camera->rotation[1] = PI;
+    // if (camera->rotation[1] < -PI) camera->rotation[1] = -PI;
 
     // scratch = rotate(front, rotation)
     memcpy(scratch_buf, camera->front, sizeof(vec3));
@@ -67,4 +68,7 @@ void camera_mouse_cb(camera_t *camera, double mouseX, double mouseY) {
     glm_vec3_add(scratch_buf, camera->origin, scratch_buf);
     // target = scratch;
     memcpy(camera->target, scratch_buf, sizeof(vec3));
+    pmouse[0] = mouseX;
+    pmouse[1] = mouseY;
 }
+#undef PI
