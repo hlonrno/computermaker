@@ -1,6 +1,5 @@
 #include "camera.h"
 #include <math.h>
-#include <string.h>
 
 void camera_init(camera_t *camera, vec3 origin, vec3 target, vec3 up, vec3 front) {
     memset(camera, 0, sizeof(*camera));
@@ -57,10 +56,9 @@ vec3 scratch_buf;
 vec3 pmouse = (vec3){0, 0, 0};
 void camera_mouse_cb(camera_t *camera, double mouseX, double mouseY) {
     camera->rotation[0] += (mouseX - pmouse[0]) * PI / 180;
-    camera->rotation[1] -= (mouseY - pmouse[1]) * PI / 180;
-    // TODO: idk man, clamp camera Y rotation [89; -89] deg
+    camera->rotation[1] += (mouseY - pmouse[1]) * PI / 180;
     if (camera->rotation[1] < PI / 2) camera->rotation[1] = PI / 2;
-    if (camera->rotation[1] > PI) camera->rotation[1] = PI;
+    if (camera->rotation[1] > 1.5f * PI) camera->rotation[1] = 1.5f * PI;
 
     // scratch = rotate(front, rotation)
     memcpy(scratch_buf, camera->front, sizeof(vec3));
