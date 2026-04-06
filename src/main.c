@@ -43,18 +43,23 @@ void tick(void) {
         window.mouse.scrolled = false;
     }
 
-    if (window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down) {
+    if (window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down ||
+        window.mouse.buttons[GLFW_MOUSE_BUTTON_RIGHT].down) {
         struct world_get_at_info info = world_get_at(
             &state.world, 
             state.renderer.camera.target[0],
             state.renderer.camera.target[1],
             state.renderer.camera.target[2]
         );
-        info.chunk->blocks[info.x][info.y][info.z] = (block_t){.id = STUD};
+        if (window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down)
+            info.chunk->blocks[info.x][info.y][info.z] = (block_t){.id = STUD};
+        else info.chunk->blocks[info.x][info.y][info.z] = (block_t){.id = AIR};
 
         chunk_bake(info.chunk);
 
-        window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down = false;
+        if (window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down)
+            window.mouse.buttons[GLFW_MOUSE_BUTTON_LEFT].down = false;
+        else window.mouse.buttons[GLFW_MOUSE_BUTTON_RIGHT].down = false;
     }
     if (window.keyboard.keys[GLFW_KEY_O].down) {
         state.renderer.wireframe = !state.renderer.wireframe;
@@ -66,6 +71,7 @@ void tick(void) {
 }
 
 void render(void) {
+    skybox_draw(&state.world.skybox, &state.renderer);
     world_draw(&state.world);
 }
 

@@ -2,6 +2,8 @@
 
 #include "../gfx/shader.h"
 #include "../gfx/texture.h"
+#include "../gfx/vao.h"
+#include "../gfx/renderer.h"
 
 enum CubeMapFace {
     CUBEMAP_FACE_TOP,
@@ -14,7 +16,10 @@ enum CubeMapFace {
 
 typedef struct {
     shader_t shader;
-    texture_t faces[6];
+    GLuint handle;
+    vao_t vao;
+    vbo_t vbo;
 } skybox_t;
 
 void skybox_init(skybox_t *skybox);
+void skybox_draw(skybox_t *skybox, struct renderer *renderer);

@@ -6,8 +6,6 @@ typedef struct {
     GLuint handle;
 } texture_t;
 
-typedef void (*TextureSetup)(void);
-
-texture_t texture_load(const char *filename, TextureSetup setup);
+texture_t texture_load(const char *filename);
 void texture_destroy(texture_t texture);
 void texture_bind(texture_t texture);

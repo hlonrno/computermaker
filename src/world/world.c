@@ -6,8 +6,8 @@
 #include "skybox.h"
 
 void world_worldgen(struct world *world) {
-    for (int x = 0; x < 5; x++) {
-        for (int z = 0; z < 5; z++) {
+    for (int x = 0; x < 1; x++) {
+        for (int z = 0; z < 1; z++) {
             world_add_chunk(world, chunk_gen(x * CHUNK_X, z * CHUNK_Z));
         }
     }

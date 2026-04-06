@@ -19,7 +19,7 @@ void renderer_init(struct renderer *renderer) {
     renderer->shaders[RENDERER_SHADER_2D] = shader_load("res/shader/shader.vert", "res/shader/shader.frag");
     renderer->shaders[RENDERER_SHADER_3D] = shader_load("res/shader/3d.vert", "res/shader/3d.frag");
     // textures
-    renderer->textures[RENDERER_TEXTURE_BLOCKATLAS] = texture_load("res/texture/blockatlas.png", NULL);
+    renderer->textures[RENDERER_TEXTURE_BLOCKATLAS] = texture_load("res/texture/blockatlas.png");
 }
 
 void renderer_use_shader(struct renderer *renderer, enum RendererShaderType shader) {
@@ -37,7 +37,8 @@ void renderer_prepare(struct renderer *renderer, enum RendererPass pass) {
             break;
         case RENDERER_PASS_3D:
             glEnable(GL_DEPTH_TEST);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClear(GL_DEPTH_BUFFER_BIT);
+            glDepthFunc(GL_LEQUAL);
             glPolygonMode(GL_FRONT_AND_BACK, renderer->wireframe ? GL_LINE : GL_FILL);
             // TODO: add culling
             // glEnable(GL_CULL_FACE);

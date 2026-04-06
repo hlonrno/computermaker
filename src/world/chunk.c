@@ -11,7 +11,7 @@ chunk_t chunk_gen(int x, int z) {
     for (int x = 0; x < CHUNK_X; x++) {
         for (int y = 0; y < 1; y ++) {
             for (int z = 0; z < CHUNK_Z; z++) {
-                chunk.blocks[x][y][z] = (block_t){.id = STUD};
+                chunk.blocks[x][y][z] = (block_t){.id = BRICK};
             }
         }
     }
@@ -42,34 +42,34 @@ static void set_face(chunk_t *chunk, int x, int y, int z, enum Face face) {
             vertex[3] = (vertex_t){{x,   y+1, z+1}, {0, 1}};
             break;
         case FACE_BACK:
-            vertex[0] = (vertex_t){{x+1, y,   z}, {0,0}};
-            vertex[1] = (vertex_t){{x,   y,   z}, {1,0}};
-            vertex[2] = (vertex_t){{x,   y+1, z}, {1,1}};
-            vertex[3] = (vertex_t){{x+1, y+1, z}, {0,1}};
+            vertex[0] = (vertex_t){{x+1, y,   z}, {0, 0}};
+            vertex[1] = (vertex_t){{x,   y,   z}, {1, 0}};
+            vertex[2] = (vertex_t){{x,   y+1, z}, {1, 1}};
+            vertex[3] = (vertex_t){{x+1, y+1, z}, {0, 1}};
             break;
         case FACE_RIGHT:
-            vertex[0] = (vertex_t){{x+1, y,   z},   {0,0}};
-            vertex[1] = (vertex_t){{x+1, y,   z+1}, {1,0}};
-            vertex[2] = (vertex_t){{x+1, y+1, z+1}, {1,1}};
-            vertex[3] = (vertex_t){{x+1, y+1, z},   {0,1}};
+            vertex[0] = (vertex_t){{x+1, y,   z},   {0, 0}};
+            vertex[1] = (vertex_t){{x+1, y,   z+1}, {1, 0}};
+            vertex[2] = (vertex_t){{x+1, y+1, z+1}, {1, 1}};
+            vertex[3] = (vertex_t){{x+1, y+1, z},   {0, 1}};
             break;
         case FACE_LEFT:
-            vertex[0] = (vertex_t){{x, y,   z+1}, {0,0}};
-            vertex[1] = (vertex_t){{x, y,   z},   {1,0}};
-            vertex[2] = (vertex_t){{x, y+1, z},   {1,1}};
-            vertex[3] = (vertex_t){{x, y+1, z+1}, {0,1}};
+            vertex[0] = (vertex_t){{x, y,   z+1}, {0, 0}};
+            vertex[1] = (vertex_t){{x, y,   z},   {1, 0}};
+            vertex[2] = (vertex_t){{x, y+1, z},   {1, 1}};
+            vertex[3] = (vertex_t){{x, y+1, z+1}, {0, 1}};
             break;
         case FACE_TOP:
-            vertex[0] = (vertex_t){{x,   y+1, z},   {0,0}};
-            vertex[1] = (vertex_t){{x+1, y+1, z},   {1,0}};
-            vertex[2] = (vertex_t){{x+1, y+1, z+1}, {1,1}};
-            vertex[3] = (vertex_t){{x,   y+1, z+1}, {0,1}};
+            vertex[0] = (vertex_t){{x,   y+1, z},   {0, 0}};
+            vertex[1] = (vertex_t){{x+1, y+1, z},   {1, 0}};
+            vertex[2] = (vertex_t){{x+1, y+1, z+1}, {1, 1}};
+            vertex[3] = (vertex_t){{x,   y+1, z+1}, {0, 1}};
             break;
         case FACE_BOTTOM:
-            vertex[0] = (vertex_t){{x,   y, z+1}, {0,0}};
-            vertex[1] = (vertex_t){{x+1, y, z+1}, {1,0}};
-            vertex[2] = (vertex_t){{x+1, y, z},   {1,1}};
-            vertex[3] = (vertex_t){{x,   y, z},   {0,1}};
+            vertex[0] = (vertex_t){{x,   y, z+1}, {0, 0}};
+            vertex[1] = (vertex_t){{x+1, y, z+1}, {1, 0}};
+            vertex[2] = (vertex_t){{x+1, y, z},   {1, 1}};
+            vertex[3] = (vertex_t){{x,   y, z},   {0, 1}};
     }
 
     for (int i = 0; i < 4; i++) {
