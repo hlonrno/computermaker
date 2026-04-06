@@ -2,6 +2,7 @@
 #include <string.h>
     
 #include "cglm/util.h"
+#include "config.h"
 #include "state.h"
 #include "gfx/camera.h"
 #include "gfx/renderer.h"
@@ -9,6 +10,8 @@
 #include "world/world.h"
 
 void init(void) {
+    config_open("res/config.comm");
+    config_process();
     renderer_init(&state.renderer);
     state.renderer.wireframe = false;
     world_worldgen(&state.world);

@@ -3,6 +3,7 @@
 
 #include "skybox.h"
 #include "../global.h"
+#include "../config.h"
 
 float skyboxVertices[] = {
     // positions          
@@ -51,21 +52,23 @@ float skyboxVertices[] = {
 
 void skybox_init(skybox_t *skybox) {
     skybox->shader = shader_load("res/shader/skybox.vert", "res/shader/skybox.frag");
-    // skybox->faces[CUBEMAP_FACE_RIGHT] = texture_load("res/texture/sky512_rt.png", texture_setup, texture_gen);
-    // skybox->faces[CUBEMAP_FACE_LEFT] = texture_load("res/texture/sky512_lf.png", texture_setup, texture_gen);
-    // skybox->faces[CUBEMAP_FACE_TOP] = texture_load("res/texture/sky512_up.png", texture_setup, texture_gen);
-    // skybox->faces[CUBEMAP_FACE_BOTTOM] = texture_load("res/texture/sky512_dn.png", texture_setup, texture_gen);
-    // skybox->faces[CUBEMAP_FACE_FRONT] = texture_load("res/texture/sky512_ft.png", texture_setup, texture_gen);
-    // skybox->faces[CUBEMAP_FACE_BACK] = texture_load("res/texture/sky512_bk.png", texture_setup, texture_gen);
 
+    // const char *faces[] = {
+    //     "res/texture/sky512_rt.png",
+    //     "res/texture/sky512_lf.png",
+    //     "res/texture/sky512_up.png",
+    //     "res/texture/sky512_dn.png",
+    //     "res/texture/sky512_ft.png",
+    //     "res/texture/sky512_bk.png"
+    // };
     const char *faces[] = {
-        "res/texture/sky512_rt.png",
-        "res/texture/sky512_lf.png",
-        "res/texture/sky512_up.png",
-        "res/texture/sky512_dn.png",
-        "res/texture/sky512_ft.png",
-        "res/texture/sky512_bk.png"
-    };
+        config_get("SKY_RT"),
+        config_get("SKY_LF"),
+        config_get("SKY_UP"),
+        config_get("SKY_DN"),
+        config_get("SKY_FT"),
+        config_get("SKY_BK")
+    };    
 
     /* 
      * we won't use texture_load because it complicates the codebase

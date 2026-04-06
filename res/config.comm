@@ -1,0 +1,20 @@
+; UNCOMMENT ME TO USE 2006 SKY
+; SKY_RT=res/texture/skybox/2006_sky512_rt.png
+; SKY_LF=res/texture/skybox/2006_sky512_lf.png
+; SKY_UP=res/texture/skybox/2006_sky512_up.png
+; SKY_DN=res/texture/skybox/2006_sky512_dn.png
+; SKY_FT=res/texture/skybox/2006_sky512_ft.png
+; SKY_BK=res/texture/skybox/2006_sky512_bk.png
+; UNCOMMENT ME TO USE BROKEN SKY
+; SKY_RT=res/texture/skybox/broken_sky512_rt.png
+; SKY_LF=res/texture/skybox/broken_sky512_lf.png
+; SKY_UP=res/texture/skybox/broken_sky512_up.png
+; SKY_DN=res/texture/skybox/broken_sky512_dn.png
+; SKY_FT=res/texture/skybox/broken_sky512_ft.png
+; SKY_BK=res/texture/skybox/broken_sky512_bk.png
+SKY_RT=res/texture/skybox/sfoth_sky512_rt.png
+SKY_LF=res/texture/skybox/sfoth_sky512_lf.png
+SKY_UP=res/texture/skybox/sfoth_sky512_up.png
+SKY_DN=res/texture/skybox/sfoth_sky512_dn.png
+SKY_FT=res/texture/skybox/sfoth_sky512_ft.png
+SKY_BK=res/texture/skybox/sfoth_sky512_bk.png
