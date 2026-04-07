@@ -1,8 +1,6 @@
 CSRCS = $(shell find src -name '*.c')
 COBJS = $(patsubst %.c,$(BUILD)/%.o,$(CSRCS))
 
-DEPS = dep/cglm/libcglm.a
-
 BUILD = build
 OUTPUT = $(BUILD)/comm
 
