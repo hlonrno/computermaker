@@ -100,6 +100,8 @@ static void set_face(chunk_t *chunk, int x, int y, int z, enum Face face) {
 void chunk_bake(chunk_t *chunk) {
     free(chunk->vertexes);
     free(chunk->indexes);
+    chunk->vertexes = NULL;
+    chunk->indexes = NULL;
     chunk->indexes_count = 1;
     chunk->vertexes_count = 1;
     vao_destroy(chunk->vao);
@@ -153,3 +155,4 @@ void chunk_draw(chunk_t *chunk) {
             chunk->z
     }, RENDERER_TEXTURE_BLOCKATLAS);
 }
+

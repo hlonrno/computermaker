@@ -101,3 +101,4 @@ int main() {
     window_create("comm", 800, 600, init, destroy, tick, render);
     window_loop();
 }
+

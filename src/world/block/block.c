@@ -32,3 +32,4 @@ void logic_block_add_input(block_t *from, block_t *to) {
     to->gate.inputs = srealloc(to->gate.inputs, ++to->gate.num_inputs * sizeof(input_t));
     to->gate.inputs[to->gate.num_inputs - 1].gate = &from->gate;
 }
+

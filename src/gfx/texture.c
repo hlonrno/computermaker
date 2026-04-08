@@ -49,3 +49,4 @@ void texture_bind(texture_t texture) {
     }
     glBindTexture(GL_TEXTURE_2D, texture.handle);
 }
+
